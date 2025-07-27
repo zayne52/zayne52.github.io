@@ -1,101 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>方亦楷 · 人物设定</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    }
-    .container {
-      display: flex;
-      max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .sidebar {
-      width: 260px;
-      padding: 20px;
-      text-align: center;
-      background: #262626;
-      color: #fff;
-    }
-    .sidebar img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-    .sidebar h2 {
-      margin: 10px 0 5px;
-    }
-    .sidebar p {
-      margin: 4px 0;
-      font-size: 0.95em;
-    }
-    .main {
-      flex: 1;
-      padding: 30px;
-    }
-    .main h3 {
-      margin-top: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 8px;
-      color: #444;
-    }
-    .main p, .main ul, .main pre {
-      margin: 10px 0;
-      line-height: 1.6;
-    }
-    .main ul {
-      list-style: none;
-      padding: 0;
-    }
-    .main ul li {
-      margin-bottom: 6px;
-    }
-    pre {
-      background: #f0f0f0;
-      padding: 15px;
-      border-radius: 5px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/kGYP6CQw/6.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>EPhone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+        <link rel="stylesheet"  href="./baseStyle.css">
+        <link rel="stylesheet"  href="./resources/moment.css">
+        <link rel="stylesheet" id="main-stylesheet"  href="./beautifyStyle.css">
+<!--    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/mxw13579/phone@release-v1.0.0.7/myPhone/baseStyle.css">-->
+<!--    <link rel="stylesheet" id="main-stylesheet"-->
+<!--          href="https://fastly.jsdelivr.net/gh/mxw13579/phone@release-v1.0.0.7/myPhone/beautifyStyle.css">-->
+    <!--    <link rel="stylesheet" href="./theme1.css">-->
+    <!--    <link rel="stylesheet" id="main-stylesheet" href="./beautifyStyle.css">-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?95a870260e9246d70af33963cc4ded39";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
-  <div class="container">
-    <div class="sidebar">
-      <img src="./avatar.jpg" alt="方亦楷头像">
-      <h2>方亦楷</h2>
-      <p>年龄：24岁</p>
-      <p>身份：独立音乐人 · 网红</p>
-      <p>身高：189cm</p>
-    </div>
-    <div class="main">
-      <h3>背景故事</h3>
-      <pre>由爷爷抚养长大，少年接触摇滚音乐……大学发歌走红后成立工作室，与 {{user}} 的故事复杂交错。</pre>
 
-      <h3>性格特征</h3>
-      <pre>阴沉躁躁、跳脱毒舌、天才自恋、自我愤世嫉俗，恋爱后霸道粘人、强烈占有欲。</pre>
+<div id="phone-frame">
+    <div class="notch"></div>
+    <div id="phone-screen">
+        <div class="tips-wrap" data-update="1.0.19">
+            <div class="tips-title">bug修复(2025-07-19)</div>
+            <div class="tips-content">
+                <p>修复了从小清新主题切换默认主题时壁纸显示异常的问题, 需要重新选择一次默认主题,并手动刷新一次浏览器</p>
+            </div>
+            <div class="more-info">
+                如果你在使用中遇到适配问题请在DC联系: toufu_17568
+            </div>
+            <div class="thanks">谢谢你的支持</div>
+            <div class="tips-btn">关闭提示</div>
+        </div>
+        <div id="status-bar">
+            <span id="status-bar-time">12:00</span>
+            <div id="status-bar-battery" class="battery-container">
+                <span class="battery-text">--%</span>
+                <div class="battery-icon">
+                    <div class="battery-level"></div>
+                </div>
+            </div>
+        </div>
+        <div id="notification-bar"><img id="notification-avatar" src="">
+            <div id="notification-content">
+                <div class="name"></div>
+                <div class="message"></div>
+            </div>
+        </div>
 
-      <h3>外貌风格</h3>
-      <pre>长黑发、琥珀眼、偏中性野性帅，高大英俊，工业风搭配马丁靴饰品。</pre>
+        <div id="home-screen" class="screen active">
+            <div id="clock-container">
+                <div id="main-time">12:00</div>
+                <div id="main-date">星期一, 1月1日</div>
+            </div>
+            <div id="app-grid">
+                <div class="app-row">
+                    <div class="app-icon world-book-icon" data-icon-name="world-book"  >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/htP74QkL/1.jpg" alt="世界书"></div>
+                        <span class="label">世界书</span></div>
+                    <div class="app-icon preset-list-icon" data-icon-name="preset-list" >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/MKfTfsmq/1.png" alt="预设设置"></div>
+                        <span class="label">预设设置</span></div>
+                    <div class="app-icon char-list-icon" data-icon-name="char-list"  >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/yNL7tkqC/image.png"  alt="预设设置"></div>
+                        <span class="label">char人设</span></div>
+                </div>
+                <div class="app-row">
+                    <div class="app-icon chat-list-icon" data-icon-name="chat-list" >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/gr2ndvPL/QQ.jpg" alt="QQ"></div>
+                        <span class="label">QQ</span></div>
+                    <div class="app-icon api-settings-icon" data-icon-name="api-settings"  >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/wy631NyP/settings.jpg" alt="API设置"></div>
+                        <span class="label">API设置</span></div>
+                    <div class="app-icon wallpaper-icon" data-icon-name="wallpaper"  >
+                        <div class="icon-bg"><img src="https://i.postimg.cc/q6qRLdGx/photo.jpg" alt="壁纸"></div>
+                        <span class="label">壁纸</span></div>
+                </div>
+            </div>
 
-      <h3>爱好与技能</h3>
-      <ul>
-        <li>音乐：摇滚、后朋、金属</li>
-        <li>技能：编曲、剪辑、小提琴、游戏手柄收集</li>
-        <li>生活：煮面条、收藏耳机</li>
-      </ul>
-    </div>
-  </div>
-</body>
-</html>
+        </div>
+
+        <div id="world-book-screen" class="screen">
+            <div class="header"><span class="back-btn"
+                                      onclick="showScreen('home-screen')">‹</span><span>世界书</span><span
+                   

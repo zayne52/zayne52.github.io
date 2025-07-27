@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>方亦楷角色设定</title>
+  <style>
+    pre { white-space: pre-wrap; background: #f4f4f4; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>方亦楷角色设定</h1>
+  <pre id="json-display"></pre>
+
+  <script>
+    fetch('方亦楷正式重制1.0json.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('json-display').textContent = JSON.stringify(data, null, 2);
+      });
+  </script>
+</body>
+</html>

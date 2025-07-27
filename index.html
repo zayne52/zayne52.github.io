@@ -1,47 +1,92 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>EPhone</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="phone-frame">
-    <div class="notch"></div>
-    <div id="phone-screen">
-      <div id="status-bar">
-        <span id="status-bar-time">12:00</span>
-        <div class="battery-container">
-          <span class="battery-text">60%</span>
-          <div class="battery-icon"><div class="battery-level"></div></div>
-        </div>
-      </div>
-      <div id="notification-bar">
-        <img id="notification-avatar" src="https://i.postimg.cc/gr2ndvPL/QQ.jpg" alt="头像" />
-        <div id="notification-content">
-          <div class="name">系统消息</div>
-          <div class="message">你有一条新的通知</div>
-        </div>
-      </div>
-      <div id="home-screen">
-        <div id="main-time">12:00</div>
-        <div id="main-date">星期一, 1月1日</div>
-      </div>
-      <div class="tips-wrap" data-update="1.0.19">
-        <div class="tips-title">bug修复(2025-07-19)</div>
-        <div class="tips-content">
-          <p>修复了从小清新主题切换默认主题时壁纸显示异常的问题, 需要重新选择一次默认主题,并手动刷新一次浏览器</p>
-        </div>
-        <div class="more-info">
-          如果你在使用中遇到适配问题请在DC联系: toufu_17568
-        </div>
-        <div class="thanks">谢谢你的支持</div>
-        <div class="tips-btn">关闭提示</div>
-      </div>
-    </div>
-  </div>
+<!DOCTYPE html>  <html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">  
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/kGYP6CQw/6.png">  
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">  
+    <title>EPhone</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>  
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>  
+        <link rel="stylesheet"  href="./baseStyle.css">  
+        <link rel="stylesheet"  href="./resources/moment.css">  
+        <link rel="stylesheet" id="main-stylesheet"  href="./beautifyStyle.css">  
+<!--    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/mxw13579/phone@release-v1.0.0.7/myPhone/baseStyle.css">-->  
+<!--    <link rel="stylesheet" id="main-stylesheet"-->  
+<!--          href="https://fastly.jsdelivr.net/gh/mxw13579/phone@release-v1.0.0.7/myPhone/beautifyStyle.css">-->  
+    <!--    <link rel="stylesheet" href="./theme1.css">-->  
+    <!--    <link rel="stylesheet" id="main-stylesheet" href="./beautifyStyle.css">-->  
+    <script>  
+        var _hmt = _hmt || [];  
+        (function () {  
+            var hm = document.createElement("script");  
+            hm.src = "https://hm.baidu.com/hm.js?95a870260e9246d70af33963cc4ded39";  
+            var s = document.getElementsByTagName("script")[0];  
+            s.parentNode.insertBefore(hm, s);  
+        })();  
+    </script>  
+</head>  
+<body>  <div id="phone-frame">  
+    <div class="notch"></div>  
+    <div id="phone-screen">  
+        <div class="tips-wrap" data-update="1.0.19">  
+            <div class="tips-title">bug修复(2025-07-19)</div>  
+            <div class="tips-content">  
+                <p>修复了从小清新主题切换默认主题时壁纸显示异常的问题, 需要重新选择一次默认主题,并手动刷新一次浏览器</p>  
+            </div>  
+            <div class="more-info">  
+                如果你在使用中遇到适配问题请在DC联系: toufu_17568  
+            </div>  
+            <div class="thanks">谢谢你的支持</div>  
+            <div class="tips-btn">关闭提示</div>  
+        </div>  
+        <div id="status-bar">  
+            <span id="status-bar-time">12:00</span>  
+            <div id="status-bar-battery" class="battery-container">  
+                <span class="battery-text">--%</span>  
+                <div class="battery-icon">  
+                    <div class="battery-level"></div>  
+                </div>  
+            </div>  
+        </div>  
+        <div id="notification-bar"><img id="notification-avatar" src="">  
+            <div id="notification-content">  
+                <div class="name"></div>  
+                <div class="message"></div>  
+            </div>  
+        </div>  <div id="home-screen" class="screen active">  
+        <div id="clock-container">  
+            <div id="main-time">12:00</div>  
+            <div id="main-date">星期一, 1月1日</div>  
+        </div>  
+        <div id="app-grid">  
+            <div class="app-row">  
+                <div class="app-icon world-book-icon" data-icon-name="world-book"  >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/htP74QkL/1.jpg" alt="世界书"></div>  
+                    <span class="label">世界书</span></div>  
+                <div class="app-icon preset-list-icon" data-icon-name="preset-list" >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/MKfTfsmq/1.png" alt="预设设置"></div>  
+                    <span class="label">预设设置</span></div>  
+                <div class="app-icon char-list-icon" data-icon-name="char-list"  >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/yNL7tkqC/image.png"  alt="预设设置"></div>  
+                    <span class="label">char人设</span></div>  
+            </div>  
+            <div class="app-row">  
+                <div class="app-icon chat-list-icon" data-icon-name="chat-list" >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/gr2ndvPL/QQ.jpg" alt="QQ"></div>  
+                    <span class="label">QQ</span></div>  
+                <div class="app-icon api-settings-icon" data-icon-name="api-settings"  >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/wy631NyP/settings.jpg" alt="API设置"></div>  
+                    <span class="label">API设置</span></div>  
+                <div class="app-icon wallpaper-icon" data-icon-name="wallpaper"  >  
+                    <div class="icon-bg"><img src="https://i.postimg.cc/q6qRLdGx/photo.jpg" alt="壁纸"></div>  
+                    <span class="label">壁纸</span></div>  
+            </div>  
+        </div>  
 
-  <script src="script.js"></script>
-</body>
-</html>
+    </div>  
+
+    <div id="world-book-screen" class="screen">  
+        <div class="header"><span class="back-btn"  
+                                  onclick="showScreen('home-screen')">‹</spa
